@@ -18,11 +18,14 @@ public class gun : MonoBehaviour
 
     void Update()
     {
-        if (shotCounter < wait) //
+        if (shotCounter < wait) //Time between shots counter
         {
             shotCounter += Time.deltaTime;
         }
 
         if()
+        {
+
+        }
     }
 }
