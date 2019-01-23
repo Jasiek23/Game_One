@@ -23,8 +23,12 @@ public class gun : MonoBehaviour
             shotCounter += Time.deltaTime;
         }
 
-        if()
+        if(Input.GetMouseButton(0) && shotCounter>= wait)
         {
+            shotCounter = 0;
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+            RaycastHit hitInfo;
 
         }
     }
