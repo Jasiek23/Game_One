@@ -26,9 +26,13 @@ public class gun : MonoBehaviour
         if(Input.GetMouseButton(0) && shotCounter>= wait)
         {
             shotCounter = 0;
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // Ray - the direction in which the camera is directed
+            //Camera.main.transform.position - ray from center posiotion of camera
+            //Camera.main.transform.forward - the position in which the camera is directed
 
-            RaycastHit hitInfo;
+            RaycastHit hitInfo; //Info what the shot was fired in
+
+
 
         }
     }
