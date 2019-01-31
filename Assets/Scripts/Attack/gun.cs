@@ -32,8 +32,24 @@ public class gun : MonoBehaviour
 
             RaycastHit hitInfo; //Info what the shot was fired in
 
+            if(Physics.Raycast(ray, out hitInfo, range))
+            {
+                Vector3 hitPoint = hitInfo.point;//Info about hit object
+                GameObject go = hitInfo.collider.gameObject;//hit object
 
+                hit(go);
+
+                if(bullet != null)
+                {
+                    Instantiate(bullet, hitPoint, Quaternion.identity);
+                }
+            }
 
         }
+    }
+
+    void hit(GameObject go)
+    {
+        
     }
 }
