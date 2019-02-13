@@ -34,19 +34,28 @@ public class Enemy : MonoBehaviour
 
         lookAtPlayer = false; 
 
-        if(dist<= enemyDistance && dist>distanceFromPlayer) //check the distance between player and enemy
+        if(dist<= enemyDistance && dist>distanceFromPlayer && !isDead()) //check the distance between player and enemy
         {
             lookAtPlayer = true;
 
             enemyObject.position = Vector3.MoveTowards(enemyObject.position, playerPositionXYZ, enemySpeed * Time.deltaTime); // Vector3.MoveTowards - new position of enemy (first parameter - current position, second parameter -the position to which we aspire, third parameter - speed) 
         }
-        else if(dist <= distanceFromPlayer)
+        else if(dist <= distanceFromPlayer && isDead())
         {
             lookAtPlayer = true;
         }
 
-        lookAtMe();
-
+        if (!isDead())
+        {
+            lookAtMe();
+        }
+        else
+        {
+            if(GetComponent<Rigidbody>())
+            {
+                GetComponent<Rigidbody>().freezeRotation = false;
+            }
+        }
     }
 
     public void lookAtMe()
@@ -59,5 +68,15 @@ public class Enemy : MonoBehaviour
         {
             transform.LookAt(playerPositionXYZ);
         }
+    }
+
+    bool isDead()
+    {
+        Healthly h = gameObject.GetComponent<Healthly>();
+        if(h != null)
+        {
+            return h.ifDead();
+        }
+        return false; 
     }
 }

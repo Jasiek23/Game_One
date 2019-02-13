@@ -9,12 +9,11 @@ public class gun : MonoBehaviour
     public float shotCounter = 0f; //Counter of time between shots
 
     public GameObject bullet; // Object of bullet
-    public float health; // 
+    public float damage = 50.0f; // Points of damage 
     void Start()
     {
         
     }
-
 
     void Update()
     {
@@ -44,12 +43,17 @@ public class gun : MonoBehaviour
                     Instantiate(bullet, hitPoint, Quaternion.identity);
                 }
             }
-
         }
     }
 
-    void hit(GameObject go)
+    void hit(GameObject go)//Healthly func.
     {
-        
+        Healthly _helath = go.GetComponent<Healthly>();//Download of health from object
+
+        if(_helath != null)
+        {
+            _helath.inflictedDamage(damage);
+        }
+
     }
 }
