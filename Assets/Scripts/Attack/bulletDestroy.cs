@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bulletDestroy : MonoBehaviour
 {
-    public float duration = 1f;
+    public float duration = 0.2f;
 
     // Update is called once per frame
     void Update()
